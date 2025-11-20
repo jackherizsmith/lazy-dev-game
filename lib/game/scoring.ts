@@ -1,6 +1,6 @@
 import { Importance, ResponseType } from '../types/game';
 
-export const STARTING_POINTS = 5;
+export const STARTING_POINTS = 1;
 export const WIN_THRESHOLD = 0;
 
 export const IMPORTANCE_PENALTIES: Record<Importance, number> = {
@@ -11,10 +11,7 @@ export const IMPORTANCE_PENALTIES: Record<Importance, number> = {
 };
 
 // Determine if a lazy/moderate response causes a penalty
-export function calculatePenalty(
-  responseType: ResponseType,
-  importance: Importance
-): number {
+export function calculatePenalty(responseType: ResponseType, importance: Importance): number {
   // Diligent responses never get penalties
   if (responseType === 'diligent') {
     return 0;
