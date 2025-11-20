@@ -4,10 +4,10 @@ export const STARTING_POINTS = 1;
 export const WIN_THRESHOLD = 0;
 
 export const IMPORTANCE_PENALTIES: Record<Importance, number> = {
-  low: -2,
-  medium: -4,
-  high: -6,
-  critical: -8,
+  low: -1,
+  medium: -3,
+  high: -5,
+  critical: -7,
 };
 
 // Determine if a lazy/moderate response causes a penalty
@@ -15,9 +15,9 @@ export function calculatePenalty(responseType: ResponseType, importance: Importa
   // Diligent responses never get penalties
   if (responseType === 'diligent') {
     const penaltyChance = {
-      critical: 0.1,
-      high: 0.1,
-      medium: 0.2,
+      critical: 0,
+      high: 0,
+      medium: 0.1,
       low: 0.2,
     };
 
@@ -43,10 +43,10 @@ export function calculatePenalty(responseType: ResponseType, importance: Importa
   // Moderate responses have lower chance of penalty
   if (responseType === 'moderate') {
     const penaltyChance = {
-      critical: 0.6,
-      high: 0.5,
-      medium: 0.4,
-      low: 0.3,
+      critical: 0.5,
+      high: 0.4,
+      medium: 0.3,
+      low: 0.2,
     };
 
     if (Math.random() < penaltyChance[importance]) {

@@ -9,6 +9,7 @@ import { ResponseButton } from './ResponseButton';
 import { ScoreDisplay } from './ScoreDisplay';
 import { TimeDisplay } from './TimeDisplay';
 import { PenaltyAlert } from './PenaltyAlert';
+import { ShareButton } from './ShareButton';
 
 export function GameBoard() {
   const {
@@ -16,6 +17,7 @@ export function GameBoard() {
     currentTime,
     currentEventIndex,
     events,
+    eventHistory,
     isGameOver,
     survived,
     finalPenaltyOutcome,
@@ -70,7 +72,7 @@ export function GameBoard() {
         >
           <div className="rounded-lg border bg-card p-8 shadow-lg">
             <h1 className="mb-4 text-4xl font-bold">
-              {survived ? '🎉 You Survived!' : '😱 You\'re Fired!'}
+              {survived ? '🎉 You survived one more day!' : "😱 You're fired!"}
             </h1>
             <p className="mb-6 text-xl text-muted-foreground">
               {survived
@@ -84,7 +86,7 @@ export function GameBoard() {
                 <div className="mb-2 flex items-center justify-center gap-2">
                   <span className="text-2xl">⚠️</span>
                   <h3 className="text-lg font-bold text-red-900 dark:text-red-100">
-                    What Went Wrong:
+                    What went wrong:
                   </h3>
                 </div>
                 <p className="text-red-800 dark:text-red-200">{finalPenaltyOutcome}</p>
@@ -99,6 +101,23 @@ export function GameBoard() {
                 <strong>Events Handled:</strong> {currentEventIndex} / {events.length}
               </p>
             </div>
+
+            {/* Share Results */}
+            <div className="mb-4">
+              <ShareButton
+                gameState={{
+                  points,
+                  currentTime,
+                  currentEventIndex,
+                  events,
+                  eventHistory,
+                  isGameOver,
+                  survived,
+                  finalPenaltyOutcome,
+                }}
+              />
+            </div>
+
             <button
               onClick={() => window.location.reload()}
               className="w-full rounded-md bg-primary px-6 py-3 font-semibold text-primary-foreground hover:bg-primary/90"
