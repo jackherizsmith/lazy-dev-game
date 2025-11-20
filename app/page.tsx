@@ -31,7 +31,7 @@ export default function HomePage() {
             <li className="flex items-start gap-2">
               <span className="text-xl">⚡</span>
               <span>
-                <strong>Starting Points:</strong> You begin with 1 laziness point
+                <strong>Starting Points:</strong> You begin with 1 kudos
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -43,13 +43,15 @@ export default function HomePage() {
             <li className="flex items-start gap-2">
               <span className="text-xl">🎲</span>
               <span>
-                <strong>Choices:</strong> Lazy (+2), Moderate (+1), or Diligent (+0)
+                <strong>Choices:</strong> Lazy (+2), Moderate (+1), or Diligent (+0) - the more lazy
+                you are, the cooler you seem.
               </span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-xl">⚠️</span>
               <span>
-                <strong>Risk:</strong> Lazy choices can backfire based on task importance!
+                <strong>Risk:</strong> Lazy choices seem cool but can backfire based on task
+                importance
               </span>
             </li>
             <li className="flex items-start gap-2">

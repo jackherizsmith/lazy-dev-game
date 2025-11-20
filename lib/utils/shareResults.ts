@@ -4,30 +4,24 @@ export function generateShareText(gameState: GameState): string {
   const { survived, points, eventHistory } = gameState;
 
   // Count lazy choices
-  const lazyChoices = eventHistory.filter((h) => h.chosenResponse === 'lazy').length;
-  const moderateChoices = eventHistory.filter((h) => h.chosenResponse === 'moderate').length;
-  const diligentChoices = eventHistory.filter((h) => h.chosenResponse === 'diligent').length;
+  const lazyChoices = eventHistory.filter(h => h.chosenResponse === 'lazy').length;
+  const moderateChoices = eventHistory.filter(h => h.chosenResponse === 'moderate').length;
+  const diligentChoices = eventHistory.filter(h => h.chosenResponse === 'diligent').length;
 
   // Game URL
   const gameUrl = typeof window !== 'undefined' ? window.location.origin : 'https://lazy-dev.game';
 
   // Build share text
-  const result = survived ? '🎉 I made it to 5pm!' : '😱 I was replaced by AI!';
-  const emoji = survived ? '✅' : '❌';
+  const result = survived ? 'I made it to 5pm!' : 'I was replaced by AI!';
+  const emoji = survived ? '💰' : '🤖';
 
-  return `${emoji} Lazy Dev: Office Survival
+  return `${emoji} ${result}
 
-${result}
+📊 ${points} kudos
+💼 ${eventHistory.length} events
 
-📊 Final Score: ${points} ${points === 1 ? 'kudo' : 'kudos'}
-💼 Events Handled: ${eventHistory.length}
+😴 ${lazyChoices} | 😐 ${moderateChoices} | 🤓 ${diligentChoices}
 
-Choices Made:
-😴 Lazy: ${lazyChoices}
-😐 Moderate: ${moderateChoices}
-💪 Diligent: ${diligentChoices}
-
-Can you survive the workday? Play now:
 ${gameUrl}`;
 }
 
