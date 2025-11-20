@@ -4,7 +4,7 @@ A satirical office simulation game where you play as a developer trying to do mi
 
 ## 🎮 Game Rules
 
-- **Starting Points**: 5 laziness points
+- **Starting Points**: 1 laziness point
 - **Win Condition**: Survive until 5pm with > 0 points
 - **Lose Condition**: Points reach 0 (fired and replaced by AI)
 
@@ -32,32 +32,38 @@ A satirical office simulation game where you play as a developer trying to do mi
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd lazy-dev-game
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Set up environment variables:
+
 ```bash
 cp .env.example .env.local
 ```
 
 4. Start the PostgreSQL database:
+
 ```bash
 docker-compose up -d
 ```
 
 5. Run database migrations:
+
 ```bash
 DATABASE_URL="postgresql://lazyadmin:lazypass123@localhost:5432/lazy_dev_game" npx drizzle-kit migrate
 ```
 
 6. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -81,6 +87,7 @@ npm run dev
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - **Next.js 14** (App Router)
 - **TypeScript**
 - **Tailwind CSS**
@@ -88,11 +95,13 @@ npm run dev
 - **Zustand** (state management)
 
 ### Backend
+
 - **PostgreSQL** (database)
 - **Drizzle ORM** (type-safe queries)
 - **Next.js API Routes**
 
 ### DevOps
+
 - **Docker** & **Docker Compose**
 - **ESLint** & **Prettier**
 
@@ -143,11 +152,13 @@ docker-compose up -d
 ### Production
 
 Build the Docker image:
+
 ```bash
 docker build -t lazy-dev-game .
 ```
 
 Run the container:
+
 ```bash
 docker run -p 3000:3000 \
   -e DATABASE_URL="your_database_url" \
@@ -184,6 +195,7 @@ DATABASE_URL="postgresql://..." npx drizzle-kit migrate
 ## 📊 Database Schema
 
 ### Games Table
+
 - `id` - Primary key
 - `player_name` - Optional player name
 - `score` - Final score
@@ -193,6 +205,7 @@ DATABASE_URL="postgresql://..." npx drizzle-kit migrate
 - `created_at` - Timestamp
 
 ### Game Events Table
+
 - `id` - Primary key
 - `game_id` - Foreign key to games
 - `event_type` - Type of event

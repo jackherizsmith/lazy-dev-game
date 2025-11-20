@@ -29,10 +29,10 @@ export function calculatePenalty(responseType: ResponseType, importance: Importa
   // Lazy responses have higher chance of penalty
   if (responseType === 'lazy') {
     const penaltyChance = {
-      critical: 1.0,
-      high: 0.9,
-      medium: 0.8,
-      low: 0.7,
+      critical: 0.8,
+      high: 0.7,
+      medium: 0.6,
+      low: 0.5,
     };
 
     if (Math.random() < penaltyChance[importance]) {
@@ -43,10 +43,10 @@ export function calculatePenalty(responseType: ResponseType, importance: Importa
   // Moderate responses have lower chance of penalty
   if (responseType === 'moderate') {
     const penaltyChance = {
-      critical: 0.8,
-      high: 0.7,
-      medium: 0.6,
-      low: 0.5,
+      critical: 0.6,
+      high: 0.5,
+      medium: 0.4,
+      low: 0.3,
     };
 
     if (Math.random() < penaltyChance[importance]) {

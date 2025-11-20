@@ -23,6 +23,7 @@ const initialState: GameState = {
   eventHistory: [],
   isGameOver: false,
   survived: false,
+  finalPenaltyOutcome: undefined,
 };
 
 export const useGameStore = create<GameStore>((set, get) => ({
@@ -54,6 +55,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
     const isLastEvent = nextEventIndex >= state.events.length;
     const gameOver = isGameOver(newPoints) || isLastEvent;
     const survived = isLastEvent && newPoints > 0;
+    const firedByPenalty = isGameOver(newPoints) && penalty < 0;
 
     set({
       points: newPoints,
@@ -69,6 +71,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
       ],
       isGameOver: gameOver,
       survived,
+      finalPenaltyOutcome: firedByPenalty ? response.penaltyOutcome : undefined,
     });
 
     return {

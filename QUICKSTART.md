@@ -10,32 +10,37 @@ Get **Lazy Dev** running in 5 minutes!
 ## Installation
 
 1. **Navigate to the project:**
+
 ```bash
 cd lazy-dev-game
 ```
 
 2. **Install dependencies:**
+
 ```bash
 npm install
 ```
 
 3. **Start the database:**
+
 ```bash
 docker-compose up -d
 ```
 
 4. **Run migrations:**
+
 ```bash
 DATABASE_URL="postgresql://lazyadmin:lazypass123@localhost:5432/lazy_dev_game" npx drizzle-kit migrate
 ```
 
 5. **Start the dev server:**
+
 ```bash
 npm run dev
 ```
 
 6. **Play the game:**
-Open [http://localhost:3000](http://localhost:3000)
+   Open [http://localhost:3000](http://localhost:3000)
 
 ## Game Controls
 
@@ -46,7 +51,7 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ## Tips
 
-- Start with 5 laziness points
+- Start with 1 laziness points
 - Reach 0 points = FIRED (replaced by AI)
 - Survive all events = WIN!
 - Critical tasks are dangerous with lazy responses
@@ -64,6 +69,7 @@ docker-compose down
 ## Troubleshooting
 
 **Port 5432 already in use:**
+
 ```bash
 # Check what's using the port
 lsof -i :5432
@@ -72,6 +78,7 @@ lsof -i :5432
 ```
 
 **Database connection error:**
+
 ```bash
 # Make sure database is running
 docker-compose ps
@@ -81,6 +88,7 @@ docker-compose restart
 ```
 
 **Build errors:**
+
 ```bash
 # Clear cache and reinstall
 rm -rf node_modules .next

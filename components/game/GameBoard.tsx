@@ -18,6 +18,7 @@ export function GameBoard() {
     events,
     isGameOver,
     survived,
+    finalPenaltyOutcome,
     submitResponse,
   } = useGameStore();
 
@@ -65,7 +66,7 @@ export function GameBoard() {
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="w-full max-w-2xl text-centre"
+          className="w-full max-w-2xl text-center"
         >
           <div className="rounded-lg border bg-card p-8 shadow-lg">
             <h1 className="mb-4 text-4xl font-bold">
@@ -76,6 +77,20 @@ export function GameBoard() {
                 ? `Made it to 5pm with ${points} laziness points remaining!`
                 : 'Replaced by AI. Better luck next time!'}
             </p>
+
+            {/* Show final penalty if player was fired due to penalty */}
+            {!survived && finalPenaltyOutcome && (
+              <div className="mb-6 rounded-lg border-2 border-red-500 bg-red-50 dark:bg-red-950 p-4">
+                <div className="mb-2 flex items-center justify-center gap-2">
+                  <span className="text-2xl">⚠️</span>
+                  <h3 className="text-lg font-bold text-red-900 dark:text-red-100">
+                    What Went Wrong:
+                  </h3>
+                </div>
+                <p className="text-red-800 dark:text-red-200">{finalPenaltyOutcome}</p>
+              </div>
+            )}
+
             <div className="mb-6 rounded-lg bg-muted p-4">
               <p className="text-lg">
                 <strong>Final Score:</strong> {points} points

@@ -31,7 +31,7 @@ export default function HomePage() {
             <li className="flex items-start gap-2">
               <span className="text-xl">⚡</span>
               <span>
-                <strong>Starting Points:</strong> You begin with 5 laziness points
+                <strong>Starting Points:</strong> You begin with 1 laziness point
               </span>
             </li>
             <li className="flex items-start gap-2">

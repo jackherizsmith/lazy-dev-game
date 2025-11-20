@@ -33,4 +33,5 @@ export interface GameState {
   }[];
   isGameOver: boolean;
   survived: boolean;
+  finalPenaltyOutcome?: string; // The penalty that caused game over
 }
