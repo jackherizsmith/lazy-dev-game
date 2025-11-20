@@ -28,12 +28,12 @@ export function ShareButton({ gameState }: ShareButtonProps) {
       <div className="flex gap-2">
         <button
           onClick={handleShare}
-          className="flex-1 flex items-center justify-center gap-2 rounded-md bg-secondary px-6 py-3 font-semibold text-white hover:bg-secondary/90 transition-colors"
+          className="flex-1 flex items-center justify-center gap-1.5 rounded-md bg-secondary px-3 py-2 text-sm font-semibold text-white hover:bg-secondary/90 transition-colors"
         >
           {copied ? (
             <>
               <svg
-                className="h-5 w-5"
+                className="h-4 w-4"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -50,7 +50,7 @@ export function ShareButton({ gameState }: ShareButtonProps) {
           ) : (
             <>
               <svg
-                className="h-5 w-5"
+                className="h-4 w-4"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -69,11 +69,11 @@ export function ShareButton({ gameState }: ShareButtonProps) {
 
         <button
           onClick={() => setShowPreview(!showPreview)}
-          className="rounded-md border-2 border-secondary px-4 py-3 font-semibold text-secondary hover:bg-secondary/10 transition-colors"
+          className="rounded-md border-2 border-secondary px-2.5 py-2 text-sm font-semibold text-secondary hover:bg-secondary/10 transition-colors"
           aria-label="Preview share text"
         >
           <svg
-            className="h-5 w-5"
+            className="h-4 w-4"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -106,11 +106,11 @@ export function ShareButton({ gameState }: ShareButtonProps) {
             transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
-            <div className="mt-4 rounded-lg bg-muted p-4 text-left">
-              <p className="mb-2 text-xs font-semibold uppercase text-muted-foreground">
+            <div className="mt-3 rounded-lg bg-muted p-3 text-left">
+              <p className="mb-1.5 text-xs font-semibold uppercase text-muted-foreground">
                 Preview:
               </p>
-              <pre className="whitespace-pre-wrap text-sm font-mono">{shareText}</pre>
+              <pre className="whitespace-pre-wrap text-xs font-mono">{shareText}</pre>
             </div>
           </motion.div>
         )}

@@ -64,17 +64,17 @@ export function GameBoard() {
 
   if (isGameOver) {
     return (
-      <div className="flex min-h-screen items-center justify-center p-4">
+      <div className="flex min-h-screen items-center justify-center p-3">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           className="w-full max-w-2xl text-center"
         >
-          <div className="rounded-lg border bg-card p-8 shadow-lg">
-            <h1 className="mb-4 text-4xl font-bold">
+          <div className="rounded-lg border bg-card p-4 shadow-lg">
+            <h1 className="mb-2 text-2xl font-bold">
               {survived ? '🎉 You survived one more day!' : "😱 You're fired!"}
             </h1>
-            <p className="mb-6 text-xl text-muted-foreground">
+            <p className="mb-3 text-base text-muted-foreground">
               {survived
                 ? `Made it to 5pm with ${points} laziness points remaining!`
                 : 'Replaced by AI. Better luck next time!'}
@@ -82,28 +82,28 @@ export function GameBoard() {
 
             {/* Show final penalty if player was fired due to penalty */}
             {!survived && finalPenaltyOutcome && (
-              <div className="mb-6 rounded-lg border-2 border-red-500 bg-red-50 dark:bg-red-950 p-4">
-                <div className="mb-2 flex items-center justify-center gap-2">
-                  <span className="text-2xl">⚠️</span>
-                  <h3 className="text-lg font-bold text-red-900 dark:text-red-100">
+              <div className="mb-3 rounded-lg border-2 border-red-500 bg-red-50 dark:bg-red-950 p-3">
+                <div className="mb-1 flex items-center justify-center gap-2">
+                  <span className="text-xl">⚠️</span>
+                  <h3 className="text-base font-bold text-red-900 dark:text-red-100">
                     What went wrong:
                   </h3>
                 </div>
-                <p className="text-red-800 dark:text-red-200">{finalPenaltyOutcome}</p>
+                <p className="text-sm text-red-800 dark:text-red-200">{finalPenaltyOutcome}</p>
               </div>
             )}
 
-            <div className="mb-6 rounded-lg bg-muted p-4">
-              <p className="text-lg">
+            <div className="mb-3 rounded-lg bg-muted p-3">
+              <p className="text-sm mb-1">
                 <strong>Final Score:</strong> {points} points
               </p>
-              <p className="text-lg">
+              <p className="text-sm">
                 <strong>Events Handled:</strong> {currentEventIndex} / {events.length}
               </p>
             </div>
 
             {/* Share Results */}
-            <div className="mb-4">
+            <div className="mb-3">
               <ShareButton
                 gameState={{
                   points,
@@ -120,7 +120,7 @@ export function GameBoard() {
 
             <button
               onClick={() => window.location.reload()}
-              className="w-full rounded-md bg-primary px-6 py-3 font-semibold text-primary-foreground hover:bg-primary/90"
+              className="w-full rounded-md bg-primary px-4 py-2.5 font-semibold text-primary-foreground hover:bg-primary/90"
             >
               Play Again
             </button>
@@ -139,7 +139,7 @@ export function GameBoard() {
   }
 
   return (
-    <div className="office-bg min-h-screen p-4">
+    <div className="office-bg min-h-screen p-3">
       {/* Penalty Alert */}
       {penaltyAlert && (
         <PenaltyAlert
@@ -149,16 +149,16 @@ export function GameBoard() {
         />
       )}
 
-      <div className="mx-auto max-w-4xl py-8">
+      <div className="mx-auto max-w-4xl py-4">
         {/* Header */}
-        <div className="mb-8 flex items-centre justify-between rounded-lg bg-card p-4 shadow">
+        <div className="mb-4 flex items-centre justify-between rounded-lg bg-card p-3 shadow">
           <TimeDisplay currentTime={currentTime} />
           <ScoreDisplay points={points} />
         </div>
 
         {/* Progress */}
-        <div className="mb-6">
-          <div className="mb-2 flex justify-between text-sm text-muted-foreground">
+        <div className="mb-4">
+          <div className="mb-1.5 flex justify-between text-xs text-muted-foreground">
             <span>Progress</span>
             <span>
               {currentEventIndex + 1} / {events.length}
@@ -175,14 +175,14 @@ export function GameBoard() {
         </div>
 
         {/* Event Card */}
-        <div className="mb-6">
+        <div className="mb-4">
           <AnimatePresence mode="wait">
             <EventCard key={currentEvent.id} event={currentEvent} />
           </AnimatePresence>
         </div>
 
         {/* Response Buttons */}
-        <div className="space-y-4">
+        <div className="space-y-2.5">
           <ResponseButton
             responseType="lazy"
             text={currentEvent.responses.lazy.text}
@@ -207,7 +207,7 @@ export function GameBoard() {
         </div>
 
         {/* Help text */}
-        <p className="mt-6 text-centre text-sm text-muted-foreground">
+        <p className="mt-4 text-centre text-xs text-muted-foreground">
           Use keyboard shortcuts 1, 2, 3 or click to respond
         </p>
       </div>

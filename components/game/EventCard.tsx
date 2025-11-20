@@ -53,12 +53,12 @@ export function EventCard({ event }: EventCardProps) {
       <Card className="w-full max-w-2xl">
         <CardHeader>
           <div className="flex items-start justify-between">
-            <div className="flex items-center gap-3">
-              <span className="text-4xl">{getEventIcon(event.type)}</span>
+            <div className="flex items-center gap-2">
+              <span className="text-2xl">{getEventIcon(event.type)}</span>
               <div>
-                <CardTitle className="text-xl">{getEventTitle(event.type)}</CardTitle>
+                <CardTitle className="text-base">{getEventTitle(event.type)}</CardTitle>
                 <span
-                  className={`mt-2 inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase ${getImportanceColour(
+                  className={`mt-1 inline-block rounded-full px-2 py-0.5 text-xs font-semibold uppercase ${getImportanceColour(
                     event.importance
                   )}`}
                 >
@@ -69,7 +69,7 @@ export function EventCard({ event }: EventCardProps) {
           </div>
         </CardHeader>
         <CardContent>
-          <p className="text-lg leading-relaxed">{event.description}</p>
+          <p className="text-sm leading-snug">{event.description}</p>
         </CardContent>
       </Card>
     </motion.div>

@@ -47,18 +47,18 @@ export function ResponseButton({
       variant={getVariant(responseType)}
       onClick={onClick}
       disabled={disabled}
-      className="w-full p-6 text-left flex flex-col items-start gap-2 h-auto"
+      className="w-full p-3 text-left flex flex-col items-start gap-1.5 h-auto"
     >
       <div className="flex items-center justify-between w-full">
-        <span className="font-bold text-base">{getLabel(responseType)}</span>
-        <div className="flex items-center gap-2">
-          <span className="text-xs opacity-75 border border-white/30 px-2 py-1 rounded">
+        <span className="font-bold text-sm">{getLabel(responseType)}</span>
+        <div className="flex items-center gap-1.5">
+          <span className="text-xs opacity-75 border border-white/30 px-1.5 py-0.5 rounded">
             {keyboardShortcut}
           </span>
-          <span className="text-sm font-semibold">+{points} points</span>
+          <span className="text-xs font-semibold">+{points} points</span>
         </div>
       </div>
-      <span className="text-sm font-normal opacity-90">{text}</span>
+      <span className="text-xs font-normal opacity-90">{text}</span>
     </Button>
   );
 }

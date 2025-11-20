@@ -14,13 +14,13 @@ export function ScoreDisplay({ points }: ScoreDisplayProps) {
   };
 
   return (
-    <div className="flex items-center gap-2">
-      <span className="text-sm font-medium text-muted-foreground">Laziness Points:</span>
+    <div className="flex items-center gap-1.5">
+      <span className="text-xs font-medium text-muted-foreground">Laziness Points:</span>
       <motion.span
         key={points}
         initial={{ scale: 1.3 }}
         animate={{ scale: 1 }}
-        className={`text-2xl font-bold ${getColour(points)}`}
+        className={`text-lg font-bold ${getColour(points)}`}
       >
         {points}
       </motion.span>
