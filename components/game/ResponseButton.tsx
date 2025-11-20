@@ -31,17 +31,6 @@ export function ResponseButton({
     }
   };
 
-  const getLabel = (type: ResponseType) => {
-    switch (type) {
-      case 'lazy':
-        return 'Lazy';
-      case 'moderate':
-        return 'Moderate';
-      case 'diligent':
-        return 'Diligent';
-    }
-  };
-
   return (
     <Button
       variant={getVariant(responseType)}
@@ -50,15 +39,14 @@ export function ResponseButton({
       className="w-full p-3 text-left flex flex-col items-start gap-1.5 h-auto"
     >
       <div className="flex items-center justify-between w-full">
-        <span className="font-bold text-sm">{getLabel(responseType)}</span>
+        <span className="text-xs font-bold opacity-90">{text}</span>
         <div className="flex items-center gap-1.5">
           <span className="text-xs opacity-75 border border-white/30 px-1.5 py-0.5 rounded">
             {keyboardShortcut}
           </span>
-          <span className="text-xs font-semibold">+{points} points</span>
+          <span className="text-xs font-semibold">+{points} pts</span>
         </div>
       </div>
-      <span className="text-xs font-normal opacity-90">{text}</span>
     </Button>
   );
 }

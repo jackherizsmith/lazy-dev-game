@@ -29,7 +29,30 @@ export function GameBoard() {
     penalty: number;
   } | null>(null);
 
+  const [shuffledResponses, setShuffledResponses] = useState<
+    Array<{ type: ResponseType; shortcut: string }>
+  >([]);
+
   const currentEvent = events[currentEventIndex];
+
+  // Shuffle responses when event changes
+  useEffect(() => {
+    if (currentEvent) {
+      const responses: Array<{ type: ResponseType; shortcut: string }> = [
+        { type: 'lazy', shortcut: '1' },
+        { type: 'moderate', shortcut: '2' },
+        { type: 'diligent', shortcut: '3' },
+      ];
+
+      // Fisher-Yates shuffle
+      for (let i = responses.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [responses[i], responses[j]] = [responses[j], responses[i]];
+      }
+
+      setShuffledResponses(responses);
+    }
+  }, [currentEvent]);
 
   const handleResponse = (responseType: ResponseType) => {
     const result = submitResponse(responseType);
@@ -44,23 +67,18 @@ export function GameBoard() {
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
-      if (isGameOver || !currentEvent) return;
+      if (isGameOver || !currentEvent || shuffledResponses.length === 0) return;
 
-      const keyMap: Record<string, ResponseType> = {
-        '1': 'lazy',
-        '2': 'moderate',
-        '3': 'diligent',
-      };
-
-      const responseType = keyMap[e.key];
-      if (responseType) {
-        handleResponse(responseType);
+      // Map keyboard shortcuts to the shuffled response types
+      const response = shuffledResponses.find((r) => r.shortcut === e.key);
+      if (response) {
+        handleResponse(response.type);
       }
     };
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [isGameOver, currentEvent]);
+  }, [isGameOver, currentEvent, shuffledResponses]);
 
   if (isGameOver) {
     return (
@@ -183,27 +201,16 @@ export function GameBoard() {
 
         {/* Response Buttons */}
         <div className="space-y-2.5">
-          <ResponseButton
-            responseType="lazy"
-            text={currentEvent.responses.lazy.text}
-            points={currentEvent.responses.lazy.points}
-            onClick={() => handleResponse('lazy')}
-            keyboardShortcut="1"
-          />
-          <ResponseButton
-            responseType="moderate"
-            text={currentEvent.responses.moderate.text}
-            points={currentEvent.responses.moderate.points}
-            onClick={() => handleResponse('moderate')}
-            keyboardShortcut="2"
-          />
-          <ResponseButton
-            responseType="diligent"
-            text={currentEvent.responses.diligent.text}
-            points={currentEvent.responses.diligent.points}
-            onClick={() => handleResponse('diligent')}
-            keyboardShortcut="3"
-          />
+          {shuffledResponses.map((response) => (
+            <ResponseButton
+              key={response.type}
+              responseType={response.type}
+              text={currentEvent.responses[response.type].text}
+              points={currentEvent.responses[response.type].points}
+              onClick={() => handleResponse(response.type)}
+              keyboardShortcut={response.shortcut}
+            />
+          ))}
         </div>
 
         {/* Help text */}

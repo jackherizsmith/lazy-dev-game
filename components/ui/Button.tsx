@@ -12,9 +12,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variants = {
       default: 'bg-primary text-primary-foreground hover:bg-primary/90 focus:ring-primary',
-      lazy: 'bg-red-500 text-white hover:bg-red-600 focus:ring-red-500',
-      moderate: 'bg-yellow-500 text-white hover:bg-yellow-600 focus:ring-yellow-500',
-      diligent: 'bg-green-500 text-white hover:bg-green-600 focus:ring-green-500',
+      lazy: 'bg-slate-600 text-white hover:bg-slate-700 focus:ring-slate-500',
+      moderate: 'bg-slate-600 text-white hover:bg-slate-700 focus:ring-slate-500',
+      diligent: 'bg-slate-600 text-white hover:bg-slate-700 focus:ring-slate-500',
       outline: 'border-2 border-border bg-transparent hover:bg-muted focus:ring-primary',
     };
 
