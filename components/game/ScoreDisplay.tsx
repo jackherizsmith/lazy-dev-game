@@ -15,7 +15,7 @@ export function ScoreDisplay({ points }: ScoreDisplayProps) {
 
   return (
     <div className="flex items-center gap-1.5">
-      <span className="text-xs font-medium text-muted-foreground">Laziness kudos:</span>
+      <span className="text-xs font-medium text-muted-foreground">Coolness:</span>
       <motion.span
         key={points}
         initial={{ scale: 1.3 }}

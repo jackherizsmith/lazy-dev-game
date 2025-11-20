@@ -17,10 +17,9 @@ export function generateShareText(gameState: GameState): string {
 
   return `${emoji} ${result}
 
-📊 ${points} kudos
-💼 ${eventHistory.length} events
-
-😴 ${lazyChoices} | 😐 ${moderateChoices} | 🤓 ${diligentChoices}
+📊 ${points} coolness points
+💼 ${eventHistory.length} events:
+😴x${lazyChoices} | 😐x${moderateChoices} | 🤓x${diligentChoices}
 
 ${gameUrl}`;
 }

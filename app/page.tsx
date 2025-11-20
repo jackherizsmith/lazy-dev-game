@@ -31,7 +31,7 @@ export default function HomePage() {
             <li className="flex items-start gap-2">
               <span className="text-xl">⚡</span>
               <span>
-                <strong>Starting Points:</strong> You begin with 1 kudos
+                <strong>Starting Points:</strong> You begin with 1 coolness point
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -66,10 +66,6 @@ export default function HomePage() {
         <Button onClick={() => router.push('/game')} className="px-12 py-6 text-xl">
           Start Your Day
         </Button>
-
-        <p className="mt-6 text-sm text-muted-foreground">
-          Use keyboard shortcuts (1, 2, 3) for quick responses
-        </p>
       </motion.div>
     </div>
   );

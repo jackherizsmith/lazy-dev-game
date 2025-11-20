@@ -94,7 +94,7 @@ export function GameBoard() {
             </h1>
             <p className="mb-3 text-base text-muted-foreground">
               {survived
-                ? `Made it to 5pm with ${points} laziness kudos remaining!`
+                ? `Made it to 5pm with ${points} coolness point remaining!`
                 : 'Replaced by AI. Better luck next time!'}
             </p>
 
@@ -113,10 +113,10 @@ export function GameBoard() {
 
             <div className="mb-3 rounded-lg bg-muted p-3">
               <p className="text-sm mb-1">
-                <strong>Final Score:</strong> {points} kudos
+                <strong>Final score:</strong> {points}
               </p>
               <p className="text-sm">
-                <strong>Events Handled:</strong> {currentEventIndex} / {events.length}
+                <strong>Events handled:</strong> {currentEventIndex} / {events.length}
               </p>
             </div>
 
