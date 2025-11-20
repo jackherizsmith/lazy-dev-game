@@ -19,7 +19,7 @@ export function generateShareText(gameState: GameState): string {
 
 ${result}
 
-📊 Final Score: ${points} ${points === 1 ? 'point' : 'points'}
+📊 Final Score: ${points} ${points === 1 ? 'kudo' : 'kudos'}
 💼 Events Handled: ${eventHistory.length}
 
 Choices Made:

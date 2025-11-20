@@ -70,7 +70,7 @@ export function GameBoard() {
       if (isGameOver || !currentEvent || shuffledResponses.length === 0) return;
 
       // Map keyboard shortcuts to the shuffled response types
-      const response = shuffledResponses.find((r) => r.shortcut === e.key);
+      const response = shuffledResponses.find(r => r.shortcut === e.key);
       if (response) {
         handleResponse(response.type);
       }
@@ -94,7 +94,7 @@ export function GameBoard() {
             </h1>
             <p className="mb-3 text-base text-muted-foreground">
               {survived
-                ? `Made it to 5pm with ${points} laziness points remaining!`
+                ? `Made it to 5pm with ${points} laziness kudos remaining!`
                 : 'Replaced by AI. Better luck next time!'}
             </p>
 
@@ -113,7 +113,7 @@ export function GameBoard() {
 
             <div className="mb-3 rounded-lg bg-muted p-3">
               <p className="text-sm mb-1">
-                <strong>Final Score:</strong> {points} points
+                <strong>Final Score:</strong> {points} kudos
               </p>
               <p className="text-sm">
                 <strong>Events Handled:</strong> {currentEventIndex} / {events.length}
@@ -201,7 +201,7 @@ export function GameBoard() {
 
         {/* Response Buttons */}
         <div className="space-y-2.5">
-          {shuffledResponses.map((response) => (
+          {shuffledResponses.map(response => (
             <ResponseButton
               key={response.type}
               responseType={response.type}
@@ -212,11 +212,6 @@ export function GameBoard() {
             />
           ))}
         </div>
-
-        {/* Help text */}
-        <p className="mt-4 text-centre text-xs text-muted-foreground">
-          Use keyboard shortcuts 1, 2, 3 or click to respond
-        </p>
       </div>
     </div>
   );

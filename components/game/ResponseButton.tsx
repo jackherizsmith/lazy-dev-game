@@ -36,16 +36,10 @@ export function ResponseButton({
       variant={getVariant(responseType)}
       onClick={onClick}
       disabled={disabled}
-      className="w-full p-3 text-left flex flex-col items-start gap-1.5 h-auto"
+      className="w-full p-3 text-left flex flex-col items-start gap-1.5 h-auto outline-none"
     >
       <div className="flex items-center justify-between w-full">
         <span className="text-xs font-bold opacity-90">{text}</span>
-        <div className="flex items-center gap-1.5">
-          <span className="text-xs opacity-75 border border-white/30 px-1.5 py-0.5 rounded">
-            {keyboardShortcut}
-          </span>
-          <span className="text-xs font-semibold">+{points} pts</span>
-        </div>
       </div>
     </Button>
   );
