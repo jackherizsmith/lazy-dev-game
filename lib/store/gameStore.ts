@@ -10,6 +10,7 @@ interface GameStore extends GameState {
     pointsChange: number;
     newPoints: number;
     penalty: number;
+    penaltyOutcome?: string;
   };
   resetGame: () => void;
 }
@@ -70,7 +71,12 @@ export const useGameStore = create<GameStore>((set, get) => ({
       survived,
     });
 
-    return { pointsChange, newPoints, penalty };
+    return {
+      pointsChange,
+      newPoints,
+      penalty,
+      penaltyOutcome: penalty < 0 ? response.penaltyOutcome : undefined,
+    };
   },
 
   resetGame: () => {

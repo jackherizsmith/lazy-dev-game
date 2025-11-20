@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useGameStore } from '@/lib/store/gameStore';
 import { ResponseType } from '@/lib/types/game';
@@ -8,6 +8,7 @@ import { EventCard } from './EventCard';
 import { ResponseButton } from './ResponseButton';
 import { ScoreDisplay } from './ScoreDisplay';
 import { TimeDisplay } from './TimeDisplay';
+import { PenaltyAlert } from './PenaltyAlert';
 
 export function GameBoard() {
   const {
@@ -20,7 +21,23 @@ export function GameBoard() {
     submitResponse,
   } = useGameStore();
 
+  const [penaltyAlert, setPenaltyAlert] = useState<{
+    outcome: string;
+    penalty: number;
+  } | null>(null);
+
   const currentEvent = events[currentEventIndex];
+
+  const handleResponse = (responseType: ResponseType) => {
+    const result = submitResponse(responseType);
+
+    if (result.penaltyOutcome) {
+      setPenaltyAlert({
+        outcome: result.penaltyOutcome,
+        penalty: result.penalty,
+      });
+    }
+  };
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
@@ -34,13 +51,13 @@ export function GameBoard() {
 
       const responseType = keyMap[e.key];
       if (responseType) {
-        submitResponse(responseType);
+        handleResponse(responseType);
       }
     };
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [isGameOver, currentEvent, submitResponse]);
+  }, [isGameOver, currentEvent]);
 
   if (isGameOver) {
     return (
@@ -89,6 +106,15 @@ export function GameBoard() {
 
   return (
     <div className="office-bg min-h-screen p-4">
+      {/* Penalty Alert */}
+      {penaltyAlert && (
+        <PenaltyAlert
+          outcome={penaltyAlert.outcome}
+          penalty={penaltyAlert.penalty}
+          onClose={() => setPenaltyAlert(null)}
+        />
+      )}
+
       <div className="mx-auto max-w-4xl py-8">
         {/* Header */}
         <div className="mb-8 flex items-centre justify-between rounded-lg bg-card p-4 shadow">
@@ -127,21 +153,21 @@ export function GameBoard() {
             responseType="lazy"
             text={currentEvent.responses.lazy.text}
             points={currentEvent.responses.lazy.points}
-            onClick={() => submitResponse('lazy')}
+            onClick={() => handleResponse('lazy')}
             keyboardShortcut="1"
           />
           <ResponseButton
             responseType="moderate"
             text={currentEvent.responses.moderate.text}
             points={currentEvent.responses.moderate.points}
-            onClick={() => submitResponse('moderate')}
+            onClick={() => handleResponse('moderate')}
             keyboardShortcut="2"
           />
           <ResponseButton
             responseType="diligent"
             text={currentEvent.responses.diligent.text}
             points={currentEvent.responses.diligent.points}
-            onClick={() => submitResponse('diligent')}
+            onClick={() => handleResponse('diligent')}
             keyboardShortcut="3"
           />
         </div>

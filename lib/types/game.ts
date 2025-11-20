@@ -6,6 +6,7 @@ export interface GameResponse {
   type: ResponseType;
   text: string;
   points: number;
+  penaltyOutcome?: string; // What happens if this choice backfires
 }
 
 export interface GameEvent {
