@@ -94,7 +94,7 @@ export function GameBoard() {
             </h1>
             <p className="mb-3 text-base text-muted-foreground">
               {survived
-                ? `Made it to 5pm with ${points} coolness point remaining!`
+                ? `Made it to 5pm with ${points} coolness ${points === 1 ? 'point' : 'points'} remaining!`
                 : 'Replaced by AI. Better luck next time!'}
             </p>
 
